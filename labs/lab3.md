@@ -1,32 +1,43 @@
-# Lab 3: Ingest Attachment Processor
+# Lab 3: FSCrawler
 
 Useful links:
 
-* <https://www.elastic.co/guide/en/elasticsearch/reference/current/attachment.html>
+* <https://fscrawler.readthedocs.io/en/latest/>
+* <https://fscrawler.readthedocs.io/en/latest/admin/cli-options.html>
+* <https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html>
 
 ## Steps
 
-Simulate a new pipeline which now extracts text from base64 encoded binary file.
-You can start from:
+The same commands can be run for both a local version of FSCrawler or the Docker image.
 
-```json
-POST _ingest/pipeline/_simulate
-{
-  "pipeline": {
-    "processors": [
-      // Add your processors here
-      // {
-      // }
-    ]
-  },
-  "docs": [
-    {
-      "_source": {
-        "content": "V2VsY29tZSB0byBEZXZveHggRnJhbmNlIDIwMTMuCg=="
-      }
-    }
-  ]
-}
+```sh
+bin/fscrawler jdll --config_dir config
 ```
+
+or
+
+```sh
+docker run -it --rm -v "`pwd`"/config:/root/.fscrawler -v "`pwd`"/files:/tmp/es:ro dadoonet/fscrawler fscrawler jdll
+```
+
+Launch FSCrawler for the first time and choose to create a new job.
+
+Edit the job so it:
+
+* uses `files` dir if you are not using Docker (skip this step otherwise)
+* uses the right URL for Elasticsearch
+* define the username (`elastic`) and the password.
+
+Start again FSCrawler.
+
+Once FSCrawler goes to sleep, stop it with CTRL+C.
+
+Launch it again with in debug mode. You should see that no file is sent to Elasticsearch.
+Fix that with the restart option.
+
+Show created indices using the `_cat` command in the dev console.
+Also look at the Stack Management / Index Management interface.
+
+Search for "words". Note that this will only work if you used the Docker image or if you have tesseract installed and available in the path.
 
 [Next step](lab4.md).

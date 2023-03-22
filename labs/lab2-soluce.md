@@ -1,26 +1,15 @@
 # Soluces for Lab 2
 
 ```json
-# Simulate the pipeline for our document
+# Simulate a new pipeline which now extracts text from base64 encoded binary file.
 POST _ingest/pipeline/_simulate
 {
   "pipeline": {
     "processors": [
       {
-        "dissect": {
+        "attachment": {
           "field": "content",
-          "pattern": "%{message}|%{session}|%{note}"
-        }
-      },
-      {
-        "remove": {
-          "field": "content"
-        }
-      },
-      {
-        "convert": {
-          "field": "note",
-          "type": "float"
+          "remove_binary": true
         }
       }
     ]
@@ -28,7 +17,7 @@ POST _ingest/pipeline/_simulate
   "docs": [
     {
       "_source": {
-        "content": "Welcome to JDLL|Indexer ses documents bureautique avec la suite Elastic et FSCrawler|2023-04-02|4.5"
+        "content": "V2VsY29tZSB0byBEZXZveHggRnJhbmNlIDIwMTMuCg=="
       }
     }
   ]

@@ -1,10 +1,4 @@
-# Soluces for Lab 4
-
-Launch FSCrawler:
-
-```sh
-docker run -it --rm -v "`pwd`"/config:/root/.fscrawler -v "`pwd`"/files:/tmp/es:ro dadoonet/fscrawler fscrawler jdll
-```
+# Soluces for Lab 5
 
 Edit the job:
 
@@ -18,33 +12,12 @@ elasticsearch:
   - url: "https://SERVICE.es.REGION.PROVIDER.cloud.es.io"
   username: "elastic"
   password: "PASSWORD"
-```
-
-Launch FSCrawler in debug mode:
-
-```sh
-docker run -it --rm -v "`pwd`"/config:/root/.fscrawler -v "`pwd`"/files:/tmp/es:ro dadoonet/fscrawler fscrawler jdll --debug
+workplace_search:
+  server: "https://SERVICE.ent.REGION.PROVIDER.cloud.es.io"
 ```
 
 Restart FSCrawler from scratch:
 
 ```sh
-docker run -it --rm -v "`pwd`"/config:/root/.fscrawler -v "`pwd`"/files:/tmp/es:ro dadoonet/fscrawler fscrawler jdll --debug --restart
-```
-
-In the Dev Console:
-
-```json
-# Show created indices
-GET /_cat/indices/jdll*?v
-
-# Search for "words".
-GET /jdll/_search 
-{
-  "query": {
-    "match": {
-      "content": "words"
-    }
-  }
-}
+docker run -it --rm -v "`pwd`"/config:/root/.fscrawler -v "`pwd`"/files:/tmp/es:ro dadoonet/fscrawler fscrawler devoxx --debug --restart
 ```
