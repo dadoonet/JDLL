@@ -1,4 +1,4 @@
-# Lab 5: FSCrawler
+# Lab 4: FSCrawler
 
 Useful links:
 
@@ -40,4 +40,4 @@ Also look at the Stack Management / Index Management interface.
 
 Search for "words". Note that this will only work if you used the Docker image or if you have tesseract installed and available in the path.
 
-[Next step](lab6.md).
+[Next step](lab5.md).
