@@ -6,7 +6,11 @@ Workshop space for [JDLL 2023](https://jdll.org/).
 
 Each lab has its specific guide:
 
-* [Lab 0](labs/lab0.md): setup
+* [Lab 0](labs/lab0.md): setup (please run this one ASAP)
+* [Lab 1](labs/lab1.md): Indexing JSON documents
+* [Lab 2](labs/lab2.md): Ingest Attachment Processor
+* [Lab 3](labs/lab3.md): FSCrawler
+* [Lab 4](labs/lab4.md): Workplace Search
 
 ## LICENSE
 
